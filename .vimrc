@@ -1,172 +1,212 @@
-" Author:	Vineeth Lakshminarayanan
-" Description:	This is the personal .vimrc file of Vineeth Lakshminarayanan. I've tried to
-" 		document every option and item.
-" Email:	vinitlaks@gmail.com
+" Author:       Vineeth Lakshminarayanan
+" Description:  This is the personal .vimrc file of Vineeth Lakshminarayanan. I've tried to
+"               document every option and item.
+" Email:        vinitlaks@gmail.com
 
-" set nocompatible makes Vim more Vim-like than Vi-like
+" Set nocompatible makes Vim more Vim-like than Vi-like.
 set nocompatible
 
-" What does this do????
-filetype off
+" Check the type of file that is being edited.
+filetype on
 filetype plugin indent on
 syntax on
 
-" Automatically reloades .vimrc without having to restart vim
+" Automatically reloades .vimrc without having to restart vim.
 autocmd! bufwritepost .vimrc source %
 
-" Better copy and paste
-set pastetoggle=<F2>
+" Better copy and paste.
+" Always toggle paste mode before pasting anything from clipboard.
+" This ensures that the whitespaces are retained when we do a paste.
+set pastetoggle=<F8>
 set clipboard=unnamed
 
-" Enable mouse and backspace in vim
-set mouse=a	" enable mouse in vim.
+" Enable mouse and backspace in vim.
+set mouse=a
 set bs=2
 
-" Rebind <Leader> key
-" Apparently, EVERYONE binds <Leader> key to ','. So :)
+" Rebind <Leader> key.
+" Apparently EVERYONE binds <Leader> key to ','. So :)
 let mapleader=","
 
-" Quicksave command
-" Remapped '<ESC>:w' to '<Ctrl>Z'
+" Quicksave command.
+" Remapped ':w' to '<Ctrl>Z'
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
 inoremap <C-Z> <C-O>:update<CR>
 
-" Quickly quit current window. Remapped ':q' to '<Leader>e'.
+" Quickly quit current window. Remapped ':q' to '<Leader>e'
 noremap <Leader>e <esc>:quit<CR>
 
-" Quickly quit all windows. Remapped ':qa!' to '<Leader>E'.
+" Quickly quit all windows. Remapped ':qa!' to '<Leader>E'. No save. Just quit.
 noremap <Leader>E :qa!<CR>
 
 " <Ctrl-X> is for replacing <ESC>
-:imap <C-X> <ESC>
+imap <C-X> <ESC>
+vmap <C-X> <ESC>
+nmap <C-X> <nop>
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w+<movement>
+" Bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w+<movement>
+" This is for splits. If you have a vertical or horizontal split.
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-" easier movement between tabs
+" Easier movement between tabs.
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 map <Leader>t <esc>:tabnew<CR>
 
-" map sort function to a key
+" Map sort function to a key.
 vnoremap <Leader>s :sort<CR>
 
-" easier movement of code blocks
+" Easier movement of code blocks.
 vnoremap < <gv
 vnoremap > >gv
 
-" Highlight whitespaces as a red block and <Leader>x will delete the extra unwanted whitespaces
+" Highlight whitespaces as a red block and <Leader>x will delete the extra
+" unwanted whitespaces.
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 map <Leader>x :%s/\s\+$//<CR>
 
-" Wombat Colouring
+" Wombat Colouring.
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat255mod.vim " http://www.vim.org/scripts/download_script.php?src_id=13400
+" wget -O wombat254mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 " Wombat color style looks awesome doesnt it?
 set t_Co=256
 color wombat256mod
 
-" Line numbers, 80 chars per line max and other fonts
+" Line numbers, 80 chars per line max and other fonts.
 set number
+
+" Width of document (used by gd)
 set tw=79
+
+" Don't automatically wrap on load.
 set nowrap
+
+" Don't automatically wrap text when typing.
 set fo-=t
+
+" Partially visible vertical line for Python's max 80 character rule.
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
-" Pressing Q in the middle of a paragraph will align it to < 80 chars
+" Pressing Q in the middle of a paragraph will align it to < 80 chars.
 vmap Q gq
 nmap Q gqap
 
-" Useful settings
+" Useful settings.
 set history=700
 set undolevels=700
 
-" Real programmers don't use TABs but spaces
+" Real programmers don't use TABs but spaces. Spaces of 4 = 1 tab space.
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
-" Make search case insensitive
+" Make search case insensitive. When we use regex for searches.
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" I HATE backup and swap files.
+" I HATE backup and swap files - They trigger too many events.
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Setup Pathogen to manage your plugins
+" Please do not use the arrow keys in vim.
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+set relativenumber
+
+" Format ugly json snippets.
+nnoremap <Leader>j :%!python -m json.tool<CR>
+
+"=================================Plugins======================================
+
+" Setup Pathogen to manage your plugins.
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim
-" https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" Now you can install any plugin into a .vim/bundle/plugin-name/ folder.
 call pathogen#infect()
-
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-" =============================================================================
-" Python IDE Setup
-" =============================================================================
-
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim
-" https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-set laststatus=2
 
 " NerdTree
 " cd ~/.vim/bundle
 " git clone https://github.com/scrooloose/nerdtree.git
-map <F2> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
-" Python folding
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim
-" http://www.vim.org/scripts/download_script.php?src_id=5491
-set foldmethod=indent   "fold based on indent
-set foldnestmax=9      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=-0         "this is just what i use
+" Ctrl-P
+" cd ~/.vim
+" git clone https://github.com/ctrlpvim/ctrlp.vim.git bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = 'vendor\|node_modules'
 
-" Flake8
-" cd ~/.vim/bundle
-" git clone https://github.com/nvie/vim-flake8.git
-autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+" Vim-Airline
+" git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+set laststatus=2
 
-" =============================================================================
-" Java IDE Setup
-" =============================================================================
+" Allow powerline symbols to show up.
+let g:airline_powerline_fonts = 1
 
-" cd ~/.vim/bundle
-" git clone https://github.com/artur-shaik/vim-javacomplete2.git
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" YCM - YouCompleteMe
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_min_num_of_chars_for_completion = 2
 
-" Smart (trying to guess import option) inserting class imports with F4
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+" ALE
+" ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
+" Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
+let g:ale_linters = { 'python': ['flake8'] , }
+let g:ale_fixers = { 'python': ['autopep8', 'isort'], }
+let g:ale_lint_on_text_changed = 'never'
+nnoremap <Leader>f :ALEFix<CR>
+"=================================Golang=======================================
+function! Golang()
 
-" Usual (will ask for import option) inserting class imports with F5
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
+    " GoTags support
+    " https://github.com/jstemmer/gotags
+    " Run gotags -f tags -R . on your project root
 
-" To add all missing imports with F6
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+    " Tagbar
+    nnoremap <silent> <Leader>b :TagbarToggle<CR>
+    let g:tagbar_width = 80
 
-" To remove all missing imports with F7
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+    " Vim-go
+    nnoremap <silent> <Leader>c :GoCoverage<CR>
+    nnoremap <silent> <Leader>v :GoCoverageClear<CR>
+    nnoremap <silent> <Leader>g :GoTestFunc<CR>
+
+    " Why am I forced to do this? I thought the vim-go plugin automatically overrides the vim defaults?
+    nnoremap <silent> <C-]> :GoDef<CR>
+    nnoremap <silent> <C-t> :GoDefPop<CR>
+    nnoremap <silent> <Leader>r :GoReferrers<CR>
+
+    "let g:go_def_mapping_enabled = 0
+    let g:go_def_mode = 'godef'
+    let g:go_fmt_command = "goimports"
+
+endfunction
+
+call Golang()
+"=================================Python=======================================
+function! Python()
+    " python-editing.vim plugin - The plugin that allows you to fold python methods.
+    " TODO Add support for code folding - python-editing.vim or SimpylFold.vim
+    set nofoldenable
+endfunction
+
+call Python()
+"==============================================================================
