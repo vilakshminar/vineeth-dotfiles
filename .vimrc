@@ -135,6 +135,10 @@ set relativenumber
 " Format ugly json snippets.
 nnoremap <Leader>j :%!python -m json.tool<CR>
 
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
 "=================================Plugins======================================
 
 " Setup Pathogen to manage your plugins.
