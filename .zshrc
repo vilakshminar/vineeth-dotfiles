@@ -1,5 +1,5 @@
 # Start a new tmux session on terminal startup.
-if [ "$TMUX" = "" ]; then tmux new -s time_pass; fi
+if [ "$TMUX" = "" ]; then tmux new -s work; fi
 
 # Set the CWD to git_repos on terminal startup.
 cd ~/Projects/git_repos/
