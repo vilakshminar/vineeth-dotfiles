@@ -4,10 +4,6 @@ if [ "$TMUX" = "" ]; then tmux new -s work; fi
 # Set the CWD to git_repos on terminal startup.
 cd ~/Projects/git_repos/
 
-# If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/bin:$PATH
-
-
 # =============================== Golang ======================================
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
