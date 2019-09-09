@@ -77,7 +77,7 @@ map <Leader>x :%s/\s\+$//<CR>
 set t_Co=256
 color wombat256mod
 
-" Line numbers, 80 chars per line max and other fonts.
+" Set line number
 set number
 
 " Width of document (used by gd)
@@ -88,14 +88,6 @@ set nowrap
 
 " Don't automatically wrap text when typing.
 set fo-=t
-
-" Partially visible vertical line for Python's max 80 character rule.
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
-
-" Pressing Q in the middle of a paragraph will align it to < 80 chars.
-vmap Q gq
-nmap Q gqap
 
 " Useful settings.
 set history=700
@@ -139,6 +131,9 @@ augroup quickfix
     autocmd!
     autocmd FileType qf setlocal wrap
 augroup END
+
+" Remap autocomplete to Ctrl-b from <C-x><C-o>
+inoremap <C-b> <C-x><C-o>
 "=================================Plugins======================================
 
 " Setup Pathogen to manage your plugins.
@@ -167,8 +162,8 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " YCM - YouCompleteMe
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_key_invoke_completion = '<C-Space>'
+" let g:ycm_min_num_of_chars_for_completion = 2
 
 " ALE
 " ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
@@ -184,6 +179,9 @@ function! Golang()
     " https://github.com/jstemmer/gotags
     " Run gotags -f tags -R . on your project root
 
+    " Verbose debug statements
+    " let g:go_debug = ['shell-commands']
+
     " Tagbar
     nnoremap <silent> <Leader>b :TagbarToggle<CR>
     let g:tagbar_width = 80
@@ -198,8 +196,8 @@ function! Golang()
     nnoremap <silent> <C-t> :GoDefPop<CR>
     nnoremap <silent> <Leader>r :GoReferrers<CR>
 
-    "let g:go_def_mapping_enabled = 0
-    let g:go_def_mode = 'godef'
+    " let g:go_def_mapping_enabled = 0
+    let g:go_def_mode = 'guru'
     let g:go_fmt_command = "goimports"
 
 endfunction
@@ -210,7 +208,11 @@ function! Python()
     " python-editing.vim plugin - The plugin that allows you to fold python methods.
     " TODO Add support for code folding - python-editing.vim or SimpylFold.vim
     set nofoldenable
+
+    " Partially visible vertical line for Python's max 80 character rule.
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=233
+
 endfunction
 
 call Python()
-"==============================================================================
