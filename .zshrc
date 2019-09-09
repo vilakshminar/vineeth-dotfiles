@@ -1,8 +1,8 @@
-# Start a new tmux session on terminal startup.
+# Start a new tmux session on terminal startup
 if [ -z "$TMUX" ]; then tmux new -s time_pass; fi
 
-# Set the CWD to git_repos on terminal startup.
-cd ~/Projects/git-repos/
+# Set the CWD on terminal startup
+cd ~/go/src/gitswarm.f5net.com/indigo/poc/
 # =============================== Golang ======================================
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
@@ -11,7 +11,7 @@ export PATH=$PATH:$GOROOT/bin
 # Don't want to deal with these go module changes
 export GO111MODULE="off"
 # ============================= Plugins/Others ================================
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation
 export ZSH=/Users/vinitlaks/.oh-my-zsh
 
 # The more history we maintain, the better. We can do reverse search easily!
