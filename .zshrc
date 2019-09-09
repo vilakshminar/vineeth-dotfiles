@@ -3,16 +3,11 @@ if [ "$TMUX" = "" ]; then tmux new -s work; fi
 
 # Set the CWD to git_repos on terminal startup.
 cd ~/Projects/git-repos/
-
-
 # =============================== Golang ======================================
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-# =============================================================================
-
-
 # ============================= Plugins/Others ================================
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/vinitlaks/.oh-my-zsh
@@ -29,8 +24,6 @@ export TERM=xterm-256color
 # I want to use Homebrew VIM and not MacOS VIM
 alias vim=/usr/local/bin/vim
 # =============================================================================
-
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -46,8 +39,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-
 # ============================= Kubernetes ====================================
 source ~/Projects/git-repos/kube-ps1/kube-ps1.sh
 PROMPT='$(kube_ps1)'$PROMPT
