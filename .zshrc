@@ -9,7 +9,7 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 # Don't want to deal with these go module changes
-export GO111MODULE="off"
+export GO111MODULE="on"
 # ============================= Plugins/Others ================================
 # Path to your oh-my-zsh installation
 export ZSH=/Users/vinitlaks/.oh-my-zsh
