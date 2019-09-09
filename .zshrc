@@ -1,5 +1,5 @@
 # Start a new tmux session on terminal startup.
-if [ "$TMUX" = "" ]; then tmux new -s work; fi
+if [ "$TMUX" = "" ]; then tmux new -s time_pass; fi
 
 # Set the CWD to git_repos on terminal startup.
 cd ~/Projects/git-repos/
@@ -43,4 +43,3 @@ source $ZSH/oh-my-zsh.sh
 source ~/Projects/git-repos/kube-ps1/kube-ps1.sh
 PROMPT='$(kube_ps1)'$PROMPT
 KUBE_PS1_SYMBOL_ENABLE=false
-# =============================================================================
