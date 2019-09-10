@@ -135,35 +135,25 @@ augroup END
 " Remap autocomplete to Ctrl-b from <C-x><C-o>
 inoremap <C-b> <C-x><C-o>
 "=================================Plugins======================================
-
 " Setup Pathogen to manage your plugins.
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder.
 call pathogen#infect()
 
-" NerdTree
-" cd ~/.vim/bundle
-" git clone https://github.com/scrooloose/nerdtree.git
+" nerdtree
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
-" Ctrl-P
-" cd ~/.vim
-" git clone https://github.com/ctrlpvim/ctrlp.vim.git bundle/ctrlp.vim
+" ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'vendor\|node_modules'
 
-" Vim-Airline
-" git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+" vim-airline
 set laststatus=2
 
 " Allow powerline symbols to show up.
 let g:airline_powerline_fonts = 1
-
-" YCM - YouCompleteMe
-" let g:ycm_key_invoke_completion = '<C-Space>'
-" let g:ycm_min_num_of_chars_for_completion = 2
 
 " ALE
 " ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
@@ -172,6 +162,15 @@ let g:ale_linters = { 'python': ['flake8'] , }
 let g:ale_fixers = { 'python': ['autopep8', 'isort'], }
 let g:ale_lint_on_text_changed = 'never'
 nnoremap <Leader>f :ALEFix<CR>
+
+" The following 2 plugins have also been installed but no additional configuration is needed as we're using the defaults.
+" Refer to their github README.md for instructions on how to install them.
+" tmuxline
+" vim-tmux-navigator
+
+" YCM - YouCompleteMe - Not used for now!
+" let g:ycm_key_invoke_completion = '<C-Space>'
+" let g:ycm_min_num_of_chars_for_completion = 2
 "=================================Golang=======================================
 function! Golang()
 
