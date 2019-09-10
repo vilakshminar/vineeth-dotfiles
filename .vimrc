@@ -164,28 +164,21 @@ let g:ale_lint_on_text_changed = 'never'
 nnoremap <Leader>f :ALEFix<CR>
 
 " The following 2 plugins have also been installed but no additional configuration is specified
-" as we're using the defaults. Refer to their github README.md for instructions on how to install them.
+" as we're using the defaults. Refer to their README.md for instructions on how to install the plugins.
 " tmuxline
 " vim-tmux-navigator
 
-" YCM - YouCompleteMe - Not used for now!
+" Temporary unused configuration:
+" YCM - YouCompleteMe
 " let g:ycm_key_invoke_completion = '<C-Space>'
 " let g:ycm_min_num_of_chars_for_completion = 2
 "=================================Golang=======================================
 function! Golang()
-
-    " GoTags support
-    " https://github.com/jstemmer/gotags
-    " Run gotags -f tags -R . on your project root
-
-    " Verbose debug statements
-    " let g:go_debug = ['shell-commands']
-
-    " Tagbar
+    " tagbar
     nnoremap <silent> <Leader>b :TagbarToggle<CR>
     let g:tagbar_width = 80
 
-    " Vim-go
+    " vim-go
     nnoremap <silent> <Leader>c :GoCoverage<CR>
     nnoremap <silent> <Leader>v :GoCoverageClear<CR>
     nnoremap <silent> <Leader>g :GoTestFunc<CR>
@@ -199,12 +192,13 @@ function! Golang()
     let g:go_def_mode = 'guru'
     let g:go_fmt_command = "goimports"
 
+    " Verbose debug statements
+    " let g:go_debug = ['shell-commands']
 endfunction
 
 call Golang()
 "=================================Python=======================================
 function! Python()
-    " python-editing.vim plugin - The plugin that allows you to fold python methods.
     " TODO Add support for code folding - python-editing.vim or SimpylFold.vim
     set nofoldenable
 
@@ -212,6 +206,9 @@ function! Python()
     set colorcolumn=80
     highlight ColorColumn ctermbg=233
 
+    " The following plugin has also been installed but no additional configuration is needed
+    " as we're using the defaults. Refer to its README.md for instructions on how to install the plugin.
+    " jedi-vim
 endfunction
 
 call Python()
