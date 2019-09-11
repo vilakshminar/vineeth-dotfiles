@@ -209,6 +209,8 @@ function! Python()
     highlight ColorColumn ctermbg=233
 
     " jedi-vim
+    " TODO Remap <C-o> binding to <C-[> for consistency sake. When we want to
+    " pop out of the jump stack, we don't want to use <C-o>.
     let g:jedi#goto_command = "<C-]>"
     let g:jedi#goto_assignments_command = ""
     let g:jedi#goto_definitions_command = ""
