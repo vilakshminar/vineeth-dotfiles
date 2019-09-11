@@ -132,7 +132,7 @@ augroup quickfix
     autocmd FileType qf setlocal wrap
 augroup END
 
-" Remap autocomplete to Ctrl-b from <C-x><C-o>
+" Remap autocomplete to Ctrl-b from <C-x><C-o>. This works with jedi-vim too!
 inoremap <C-b> <C-x><C-o>
 "=================================Plugins======================================
 " Setup Pathogen to manage your plugins.
@@ -210,6 +210,10 @@ function! Python()
     " The following plugin has also been installed but no additional configuration is needed
     " as we're using the defaults. Refer to its README.md for instructions on how to install the plugin.
     " jedi-vim
+    let g:jedi#goto_command = "<C-]>"
+    let g:jedi#goto_assignments_command = ""
+    let g:jedi#documentation_command = ""
+    let g:jedi#rename_command = ""
 endfunction
 
 call Python()
