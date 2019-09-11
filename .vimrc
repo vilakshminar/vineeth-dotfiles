@@ -140,6 +140,7 @@ inoremap <C-b> <C-x><C-o>
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder.
 call pathogen#infect()
+call pathogen#helptags()
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
