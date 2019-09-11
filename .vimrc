@@ -190,7 +190,7 @@ function! Golang()
     nnoremap <silent> <Leader>r :GoReferrers<CR>
 
     " let g:go_def_mapping_enabled = 0
-    let g:go_def_mode = 'guru'
+    let g:go_def_mode = 'godef'
     let g:go_fmt_command = "goimports"
 
     " Verbose debug statements
@@ -207,11 +207,10 @@ function! Python()
     set colorcolumn=80
     highlight ColorColumn ctermbg=233
 
-    " The following plugin has also been installed but no additional configuration is needed
-    " as we're using the defaults. Refer to its README.md for instructions on how to install the plugin.
     " jedi-vim
     let g:jedi#goto_command = "<C-]>"
     let g:jedi#goto_assignments_command = ""
+    let g:jedi#goto_definitions_command = ""
     let g:jedi#documentation_command = ""
     let g:jedi#rename_command = ""
 endfunction
