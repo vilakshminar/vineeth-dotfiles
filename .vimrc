@@ -187,6 +187,7 @@ function! Golang()
     " Why am I forced to do this? I thought the vim-go plugin automatically overrides the vim defaults?
     nnoremap <silent> <C-]> :GoDef<CR>
     nnoremap <silent> <C-t> :GoDefPop<CR>
+    " TODO This doesn't work!
     nnoremap <silent> <Leader>r :GoReferrers<CR>
 
     " let g:go_def_mapping_enabled = 0
@@ -213,6 +214,7 @@ function! Python()
     let g:jedi#goto_definitions_command = ""
     let g:jedi#documentation_command = ""
     let g:jedi#rename_command = ""
+    let g:jedi#usages_command = "<Leader>r"
 endfunction
 
 call Python()
