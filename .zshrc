@@ -10,6 +10,8 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 # Don't want to deal with these go module changes
 export GO111MODULE="on"
+# =============================== Python ======================================
+alias python=/usr/local/bin/python3
 # ============================= Plugins/Others ================================
 # Path to your oh-my-zsh installation
 export ZSH=/Users/vineethlakshminarayanan/.oh-my-zsh
@@ -43,6 +45,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 # ============================= Kubernetes ====================================
-source ~/Projects/git-repos/kube-ps1/kube-ps1.sh
-PROMPT='$(kube_ps1)'$PROMPT
-KUBE_PS1_SYMBOL_ENABLE=false
+# source ~/Projects/git-repos/kube-ps1/kube-ps1.sh
+# PROMPT='$(kube_ps1)'$PROMPT
+# KUBE_PS1_SYMBOL_ENABLE=false
