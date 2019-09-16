@@ -2,7 +2,7 @@
 if [ -z "$TMUX" ]; then tmux new -s time_pass; fi
 
 # Set the CWD on terminal startup
-cd ~/go/src/gitswarm.f5net.com/indigo/poc/
+cd ~/Projects/git_repos/
 # =============================== Golang ======================================
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
@@ -12,7 +12,7 @@ export PATH=$PATH:$GOROOT/bin
 export GO111MODULE="on"
 # ============================= Plugins/Others ================================
 # Path to your oh-my-zsh installation
-export ZSH=/Users/vinitlaks/.oh-my-zsh
+export ZSH=/Users/vineethlakshminarayanan/.oh-my-zsh
 
 # The more history we maintain, the better. We can do reverse search easily!
 HISTFILESIZE=1000000000
@@ -38,6 +38,7 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   fzf-zsh
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
