@@ -80,9 +80,6 @@ color wombat256mod
 " Set line number
 set number
 
-" Width of document (used by gd)
-set tw=79
-
 " Don't automatically wrap on load.
 set nowrap
 
@@ -207,6 +204,9 @@ function! Python()
     " Partially visible vertical line for Python's max 80 character rule.
     set colorcolumn=80
     highlight ColorColumn ctermbg=233
+
+    " Width of document (used by gd)
+    " set tw=79
 
     " jedi-vim
     " TODO Remap <C-o> binding to <C-[> for consistency sake. When we want to
