@@ -156,8 +156,8 @@ let g:airline_powerline_fonts = 1
 " ALE
 " ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
 " Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
-let g:ale_linters = { 'python': ['flake8'] , }
-let g:ale_fixers = { 'python': ['autopep8', 'isort'], }
+let g:ale_linters = { 'python': ['flake8'] }
+let g:ale_fixers = { 'python': ['autopep8', 'isort'] }
 let g:ale_lint_on_text_changed = 'never'
 nnoremap <Leader>f :ALEFix<CR>
 
