@@ -31,7 +31,7 @@ alias vim=/usr/local/bin/vim
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -48,3 +48,6 @@ source $ZSH/oh-my-zsh.sh
 # source ~/Projects/git-repos/kube-ps1/kube-ps1.sh
 # PROMPT='$(kube_ps1)'$PROMPT
 # KUBE_PS1_SYMBOL_ENABLE=false
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
