@@ -1,5 +1,5 @@
 " Author:       Vineeth Lakshminarayanan
-" Description:  This is the personal .vimrc file of Vineeth Lakshminarayanan. I've tried to
+" Description:  This is the personal nvim/init.vim file of Vineeth Lakshminarayanan. I've tried to
 "               document every option and item.
 " Email:        vinitlaks@gmail.com
 
