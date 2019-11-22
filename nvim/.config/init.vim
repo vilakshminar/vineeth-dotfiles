@@ -11,9 +11,6 @@ filetype on
 filetype plugin indent on
 syntax on
 
-" Automatically reloades .vimrc without having to restart vim.
-autocmd! bufwritepost .vimrc source %
-
 " Better copy and paste.
 " Always toggle paste mode before pasting anything from clipboard.
 " This ensures that the whitespaces are retained when we do a paste.
@@ -128,9 +125,6 @@ augroup quickfix
     autocmd!
     autocmd FileType qf setlocal wrap
 augroup END
-
-" Remap autocomplete to Ctrl-b from <C-x><C-o>. This works with jedi-vim too!
-inoremap <C-b> <C-x><C-o>
 "=================================Plugins======================================
 call plug#begin()
 
@@ -158,7 +152,6 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " ctrl-p
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_custom_ignore = 'vendor\|node_modules'
 
 " vim-airline
@@ -201,7 +194,6 @@ function! Golang()
     " TODO This doesn't work!
     nnoremap <silent> <Leader>r :GoReferrers<CR>
 
-    " let g:go_def_mapping_enabled = 0
     let g:go_def_mode = 'godef'
     let g:go_fmt_command = "goimports"
 
@@ -221,16 +213,6 @@ function! Python()
 
     " Width of document (used by gd)
     " set tw=79
-
-    " jedi-vim
-    " TODO Remap <C-o> binding to <C-[> for consistency sake. When we want to
-    " pop out of the jump stack, we don't want to use <C-o>.
-    let g:jedi#goto_command = "<C-]>"
-    let g:jedi#goto_assignments_command = ""
-    let g:jedi#goto_definitions_command = ""
-    let g:jedi#documentation_command = ""
-    let g:jedi#rename_command = ""
-    let g:jedi#usages_command = "<Leader>r"
 endfunction
 
 call Python()
