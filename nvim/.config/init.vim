@@ -168,11 +168,6 @@ let g:ale_fixers = { 'python': ['autopep8', 'isort'] }
 let g:ale_lint_on_text_changed = 'never'
 nnoremap <Leader>f :ALEFix<CR>
 
-" The following 2 plugins have also been installed but no additional configuration is specified
-" as we're using the defaults. Refer to their README.md for instructions on how to install the plugins.
-" tmuxline
-" vim-tmux-navigator
-
 " Temporary unused configuration:
 " YCM - YouCompleteMe
 " let g:ycm_key_invoke_completion = '<C-Space>'
