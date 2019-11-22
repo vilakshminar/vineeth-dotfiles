@@ -1,3 +1,6 @@
+" NOTE: Archived! I do not use/maintain this anymore. I've moved on to neovim.
+" Configuration for neovim can be found at vineeth-dotfiles/nvim/.config/init.vim
+
 " Author:       Vineeth Lakshminarayanan
 " Description:  This is the personal .vimrc file of Vineeth Lakshminarayanan. I've tried to
 "               document every option and item.
