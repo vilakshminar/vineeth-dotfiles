@@ -1,3 +1,5 @@
 [user]
 	name = Vineeth Lakshminarayanan
 	email = vinitlaks@gmail.com
+[core]
+	editor = nvim
