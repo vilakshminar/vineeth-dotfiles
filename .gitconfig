@@ -3,3 +3,4 @@
 	email = vinitlaks@gmail.com
 [core]
 	editor = nvim
+	hooksPath = /Users/vineethlakshminarayanan/.git-templates/hooks
