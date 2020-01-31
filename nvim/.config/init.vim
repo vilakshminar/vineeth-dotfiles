@@ -144,6 +144,12 @@ Plug 'vim-airline/vim-airline'
 " navigation
 Plug 'christoomey/vim-tmux-navigator'
 
+" vim-go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" YouCompleteMe
+Plug 'ycm-core/YouCompleteMe'
+
 call plug#end()
 
 
@@ -163,20 +169,18 @@ let g:airline_powerline_fonts = 1
 " ALE
 " ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
 " Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
-let g:ale_linters = { 'python': ['flake8'] }
-let g:ale_fixers = { 'python': ['autopep8', 'isort'] }
 let g:ale_lint_on_text_changed = 'never'
 nnoremap <Leader>f :ALEFix<CR>
 
 " Temporary unused configuration:
 " YCM - YouCompleteMe
-" let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_invoke_completion = '<C-Space>'
 " let g:ycm_min_num_of_chars_for_completion = 2
 "=================================Golang=======================================
 function! Golang()
     " tagbar
-    nnoremap <silent> <Leader>b :TagbarToggle<CR>
-    let g:tagbar_width = 80
+    " nnoremap <silent> <Leader>b :TagbarToggle<CR>
+    " let g:tagbar_width = 80
 
     " vim-go
     nnoremap <silent> <Leader>c :GoCoverage<CR>
@@ -189,7 +193,7 @@ function! Golang()
     " TODO This doesn't work!
     nnoremap <silent> <Leader>r :GoReferrers<CR>
 
-    let g:go_def_mode = 'godef'
+    let g:go_def_mode = 'gopls'
     let g:go_fmt_command = "goimports"
 
     " Verbose debug statements
@@ -199,6 +203,11 @@ endfunction
 call Golang()
 "=================================Python=======================================
 function! Python()
+
+    " ALE configuration.
+    let g:ale_linters = { 'python': ['flake8'] }
+    let g:ale_fixers = { 'python': ['autopep8', 'isort'] }
+
     " TODO Add support for code folding - python-editing.vim or SimpylFold.vim
     set nofoldenable
 
