@@ -2,7 +2,7 @@
 if [ -z "$TMUX" ]; then tmux new -s time_pass; fi
 
 # Set the CWD on terminal startup
-cd ~/Projects/git_repos/
+cd ~/Projects/git-repos/
 # =============================== Golang ======================================
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
@@ -25,8 +25,8 @@ HISTSIZE=100000
 # display any colors for vim-airline status line. This mitigates that problem
 export TERM=xterm-256color
 
-# I want to use Homebrew VIM and not MacOS VIM
-alias vim=/usr/local/bin/vim
+# I want to use NeoVIM and not MacOS/Homebrew VIM
+alias vim=/usr/local/bin/nvim
 # =============================================================================
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
