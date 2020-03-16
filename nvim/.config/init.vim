@@ -38,21 +38,21 @@ noremap <Leader>e <esc>:quit<CR>
 noremap <Leader>E :qa!<CR>
 
 " <Ctrl-X> is for replacing <ESC>
-imap <C-X> <ESC>
-vmap <C-X> <ESC>
-nmap <C-X> <nop>
+inoremap <C-X> <ESC>
+vnoremap <C-X> <ESC>
+vnoremap <C-X> <nop>
 
 " Bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w+<movement>
 " This is for splits. If you have a vertical or horizontal split.
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
 
 " Easier movement between tabs.
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
-map <Leader>t <esc>:tabnew<CR>
+noremap <Leader>n <esc>:tabprevious<CR>
+noremap <Leader>m <esc>:tabnext<CR>
+noremap <Leader>t <esc>:tabnew<CR>
 
 " Map sort function to a key.
 vnoremap <Leader>s :sort<CR>
@@ -65,7 +65,7 @@ vnoremap > >gv
 " unwanted whitespaces.
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-map <Leader>x :%s/\s\+$//<CR>
+noremap <Leader>x :%s/\s\+$//<CR>
 
 " Wombat Colouring.
 " mkdir -p ~/.config/nvim/colors && cd ~/.config/nvim/colors
@@ -148,14 +148,23 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " YouCompleteMe
-Plug 'ycm-core/YouCompleteMe'
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !brew install cmake python
+    !brew install mono nodejs
+    !python3 install.py --all
+  endif
+endfunction
+Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
+
+" System copy paste
+Plug 'christoomey/vim-system-copy'
 
 call plug#end()
 
 
 " nerdtree
 " Open nerdtree in the directory of the current file.
-nmap <silent> <C-i> :call NERDTreeToggleInCurDir()<cr>
 function! NERDTreeToggleInCurDir()
   " If NERDTree is open in the current buffer
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
@@ -164,7 +173,8 @@ function! NERDTreeToggleInCurDir()
     exe ":NERDTreeFind"
   endif
 endfunction
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-i> :call NERDTreeToggleInCurDir()<cr>
+noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " ctrl-p
