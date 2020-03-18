@@ -8,7 +8,6 @@ export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-# Don't want to deal with these go module changes
 export GO111MODULE="on"
 # =============================== Python ======================================
 alias python=/usr/local/bin/python3
