@@ -40,7 +40,7 @@ noremap <Leader>E :qa!<CR>
 " <Ctrl-X> is for replacing <ESC>
 inoremap <C-X> <ESC>
 vnoremap <C-X> <ESC>
-vnoremap <C-X> <nop>
+nnoremap <C-X> <nop>
 
 " Bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w+<movement>
 " This is for splits. If you have a vertical or horizontal split.
@@ -135,7 +135,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 
 " search
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " statusline
 Plug 'edkolev/tmuxline.vim'
@@ -157,11 +158,7 @@ function! BuildYCM(info)
 endfunction
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 
-" System copy paste
-"Plug 'christoomey/vim-system-copy'
-
 call plug#end()
-
 
 " nerdtree
 " Open nerdtree in the directory of the current file.
@@ -176,9 +173,6 @@ endfunction
 nnoremap <silent> <C-i> :call NERDTreeToggleInCurDir()<cr>
 noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-
-" ctrl-p
-let g:ctrlp_custom_ignore = 'vendor\|node_modules'
 
 " vim-airline
 set laststatus=2
@@ -196,6 +190,12 @@ nnoremap <Leader>f :ALEFix<CR>
 " YCM - YouCompleteMe
 let g:ycm_key_invoke_completion = '<C-Space>'
 " let g:ycm_min_num_of_chars_for_completion = 2
+
+" fzf
+nnoremap <C-p> :FZF<cr>
+"start a search query by pressing \
+" ripgrep needs to be installed for the following to work: https://github.com/BurntSushi/ripgrep#installation
+nnoremap \ :Rg<space>
 "=================================Golang=======================================
 function! Golang()
     " tagbar
