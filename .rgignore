@@ -1,3 +1,4 @@
 # Application specific files
 go.sum
+README.md
 vendor
