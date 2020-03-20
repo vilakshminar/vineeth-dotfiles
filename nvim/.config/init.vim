@@ -158,7 +158,7 @@ endfunction
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " System copy paste
-Plug 'christoomey/vim-system-copy'
+"Plug 'christoomey/vim-system-copy'
 
 call plug#end()
 
