@@ -1,7 +1,7 @@
-# Start a new tmux session on terminal startup
+# Start a new tmux session on terminal startup.
 if [ -z "$TMUX" ]; then tmux new -s time_pass; fi
 
-# Set the CWD on terminal startup
+# Set the CWD on terminal startup.
 cd ~/Projects/git-repos/
 # =============================== Golang ======================================
 export GOPATH=$HOME/go
@@ -12,7 +12,7 @@ export GO111MODULE="on"
 # =============================== Python ======================================
 alias python=/usr/local/bin/python3
 # ============================= Plugins/Others ================================
-# Path to your oh-my-zsh installation
+# Path to your oh-my-zsh installation.
 export ZSH=/Users/vineethlakshminarayanan/.oh-my-zsh
 
 # The more history we maintain, the better. We can do reverse search easily!
@@ -36,6 +36,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# Refer to https://github.com/wyntau/fzf-zsh for instructions on how to install fzf-zsh.
 plugins=(
   git
   fzf-zsh
