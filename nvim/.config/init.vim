@@ -183,13 +183,13 @@ let g:airline_powerline_fonts = 1
 " ALE
 " ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
 " Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
 let g:ale_lint_on_text_changed = 'never'
 nnoremap <Leader>f :ALEFix<CR>
 
-" Temporary unused configuration:
 " YCM - YouCompleteMe
 let g:ycm_key_invoke_completion = '<C-Space>'
-" let g:ycm_min_num_of_chars_for_completion = 2
 
 " fzf
 nnoremap <C-p> :FZF<cr>
