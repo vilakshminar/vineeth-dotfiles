@@ -1,4 +1,5 @@
 # Application specific files
 go.sum
+Makefile
 README.md
 vendor
