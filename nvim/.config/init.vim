@@ -185,7 +185,13 @@ let g:airline_powerline_fonts = 1
 " Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️ '
+let g:ale_set_highlights = 0
 let g:ale_lint_on_text_changed = 'never'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+highlight clear SignColumn
 nnoremap <Leader>f :ALEFix<CR>
 
 " YCM - YouCompleteMe
