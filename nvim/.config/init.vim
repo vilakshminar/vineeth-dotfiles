@@ -181,9 +181,10 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " ALE
-" ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
+" ALE has some requirements - > Vim compiled with python is a must. Reinstalling vim from source might be needed if you're not using neovim.
+" Take a look at YCM docs for that.
 " Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
-" Only run linters named in ale_linters settings.
+" The following setting runs the linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️ '
