@@ -9,7 +9,6 @@ set nocompatible
 " Check the type of file that is being edited.
 filetype on
 filetype plugin indent on
-syntax on
 
 " Better copy and paste.
 " Always toggle paste mode before pasting anything from clipboard.
@@ -66,13 +65,6 @@ vnoremap > >gv
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 noremap <Leader>x :%s/\s\+$//<CR>
-
-" Wombat Colouring.
-" mkdir -p ~/.config/nvim/colors && cd ~/.config/nvim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-" Wombat color style looks awesome doesnt it?
-set t_Co=256
-colorscheme wombat256mod
 
 " Set line number
 set number
@@ -158,7 +150,19 @@ function! BuildYCM(info)
 endfunction
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 
+" onedark
+" Copy joshdick/onedark.vim/colors/onedark.vim to ~/.config/nvim/colors/ directory
+Plug 'joshdick/onedark.vim'
+
 call plug#end()
+"=============================Plugin Configuration=============================
+" OneDark
+if (has("termguicolors"))
+    set termguicolors
+endif
+let g:onedark_termcolors=16
+syntax on
+colorscheme onedark
 
 " nerdtree
 " Open nerdtree in the directory of the current file.
@@ -175,16 +179,15 @@ noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " vim-airline
-set laststatus=2
-
 " Allow powerline symbols to show up.
 let g:airline_powerline_fonts = 1
+let g:airline_theme='onedark'
+set laststatus=2
 
 " ALE
-" ALE has some requirements - > Vim compiled with python is a must. Reinstalling vim from source might be needed if you're not using neovim.
-" Take a look at YCM docs for that.
+" ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
 " Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
-" The following setting runs the linters named in ale_linters settings.
+" Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️ '
@@ -199,10 +202,10 @@ nnoremap <Leader>f :ALEFix<CR>
 let g:ycm_key_invoke_completion = '<C-Space>'
 
 " fzf
-nnoremap <C-p> :FZF<cr>
 "start a search query by pressing \
 " ripgrep needs to be installed for the following to work: https://github.com/BurntSushi/ripgrep#installation
 nnoremap \ :Rg<space>
+nnoremap <C-p> :FZF<cr>
 "=================================Golang=======================================
 function! Golang()
     " tagbar
