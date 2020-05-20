@@ -1,6 +1,11 @@
 [user]
-	name = Vineeth Lakshminarayanan
-	email = vinitlaks@gmail.com
+    name = Vineeth Lakshminarayanan
+    email = vinitlaks@gmail.com
+    signingkey = 43CA416A
 [core]
-	editor = nvim
-	hooksPath = /Users/vineethlakshminarayanan/.git-templates/hooks
+    editor = nvim
+    hooksPath = /Users/vineethlakshminarayanan/.git-templates/hooks
+[commit]
+    gpgSign = true
+[tag]
+    gpgSign = true

@@ -26,6 +26,9 @@ export TERM=xterm-256color
 
 # I want to use NeoVIM and not MacOS/Homebrew VIM
 alias vim=/usr/local/bin/nvim
+
+export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent
 # =============================================================================
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
