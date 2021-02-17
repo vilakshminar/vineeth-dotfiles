@@ -112,11 +112,6 @@ set relativenumber
 
 " Format ugly json snippets.
 nnoremap <Leader>j :%!python -m json.tool<CR>
-
-augroup quickfix
-    autocmd!
-    autocmd FileType qf setlocal wrap
-augroup END
 "=================================Plugins======================================
 call plug#begin()
 
@@ -124,7 +119,7 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 
 " linting
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " search
 Plug 'junegunn/fzf'
@@ -156,13 +151,6 @@ Plug 'joshdick/onedark.vim'
 
 call plug#end()
 "=============================Plugin Configuration=============================
-" OneDark
-if (has("termguicolors"))
-    set termguicolors
-endif
-let g:onedark_termcolors=16
-syntax on
-colorscheme onedark
 
 " nerdtree
 " Open nerdtree in the directory of the current file.
@@ -178,34 +166,41 @@ nnoremap <silent> <C-i> :call NERDTreeToggleInCurDir()<cr>
 noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
+" ALE
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+let g:ale_set_signs = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_sign_error = ' ✘'
+let g:ale_sign_warning = ' !'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+highlight clear SignColumn
+nnoremap <Leader>f :ALEFix<CR>
+
+" fzf
+" start a search query by pressing \
+" ripgrep needs to be installed for the following to work: https://github.com/BurntSushi/ripgrep#installation
+nnoremap \ :Rg<space>
+nnoremap <C-p> :FZF<cr>
+let g:fzf_layout = { 'down': '40%' }
+
 " vim-airline
 " Allow powerline symbols to show up.
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
 set laststatus=2
 
-" ALE
-" ALE has some requirements - > Vim 8.0 (compiled with python) is a must. Reinstalling vim from source might be needed. Take a look at YCM docs for that.
-" Also the linters/fixers you run such as eslint, flake8, autopep8, isort have to be manually installed via pip/yarn/npm.
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️ '
-let g:ale_set_highlights = 0
-let g:ale_lint_on_text_changed = 'never'
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-highlight clear SignColumn
-nnoremap <Leader>f :ALEFix<CR>
-
 " YCM - YouCompleteMe
 let g:ycm_key_invoke_completion = '<C-Space>'
 
-" fzf
-"start a search query by pressing \
-" ripgrep needs to be installed for the following to work: https://github.com/BurntSushi/ripgrep#installation
-nnoremap \ :Rg<space>
-nnoremap <C-p> :FZF<cr>
+" OneDark
+if (has("termguicolors"))
+    set termguicolors
+endif
+let g:onedark_termcolors=16
+syntax on
+colorscheme onedark
 "=================================Golang=======================================
 function! Golang()
     " tagbar
@@ -218,11 +213,14 @@ function! Golang()
     nnoremap <silent> <Leader>g :GoTestFunc<CR>
 
     " Why am I forced to do this? I thought the vim-go plugin automatically overrides the vim defaults?
-    nnoremap <silent> <C-]> :GoDef<CR>
+    nnoremap <silent> <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
     nnoremap <silent> <C-t> :GoDefPop<CR>
 
     let g:go_def_mode = 'gopls'
     let g:go_fmt_command = "goimports"
+
+    let g:ale_linters = {'go': ['golangci-lint']}
+    let g:ale_go_golangci_lint_options = ''
 
     " Verbose debug statements
     " let g:go_debug = ['shell-commands']
@@ -246,5 +244,4 @@ function! Python()
     " Width of document (used by gd)
     " set tw=79
 endfunction
-
-call Python()
+" call Python()
