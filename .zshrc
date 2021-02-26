@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Start a new tmux session on terminal startup.
+if [ -z "$TMUX" ]; then tmux new -s time_pass; fi
+
 # Set the CWD on terminal startup.
 cd ~/Projects/git-repos/
 # =============================== Golang ======================================
@@ -42,7 +45,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# Refer to https://github.com/wyntau/fzf-zsh for instructions on how to install fzf-zsh.
 plugins=(
   git
   fzf
